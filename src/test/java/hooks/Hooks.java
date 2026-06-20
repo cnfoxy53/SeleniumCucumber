@@ -7,25 +7,26 @@ import base.DriverFactory;
 import io.cucumber.java.*;
 import io.cucumber.java.Scenario;
 import utilities.ConfigReader;
+import utilities.ExtentTestManager;
 //import utilities.ExcelUtils;
 import utilities.ScreenshotUtils;
 
 public class Hooks {
-	//private static ExtentReports extent;
+	private static ExtentReports extent;
 //	@BeforeAll
 //    public static void beforeAll() {
 //        String path = System.getProperty("user.dir") + "/src/test/resources/testdata/LoginData.xlsx";
 //        ExcelUtils.loadLoginData(path);
 //    }
     @Before
-    public void startBrowser() {
+    public void startBrowser(Scenario scenario) {
         new ConfigReader().initProperties();
         String browser = ConfigReader.getproperty("browser");
         boolean headless = Boolean.parseBoolean(ConfigReader.getproperty("headless"));
         DriverFactory.initDriver(browser, headless);
-        //DriverFactory.getDriver().get(ConfigReader.getproperty("url"));
-        //ExtentTest test = extent.createTest(scenario.getName());
-        //ExtentTestManager.setTest(test);
+        DriverFactory.getDriver().get(ConfigReader.getproperty("url"));
+        ExtentTest test = extent.createTest(scenario.getName());
+        ExtentTestManager.setTest(test);
     }
 
     @After

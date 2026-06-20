@@ -1,2 +1,13 @@
-test-output/
 target/
+test-output/
+logs/
+
+.classpath
+.project
+.settings/
+
+.metadata/
+
+.vscode/
+
+*.log

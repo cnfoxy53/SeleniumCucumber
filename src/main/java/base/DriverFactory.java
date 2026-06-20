@@ -17,7 +17,7 @@ public class DriverFactory {
 			ChromeOptions chromeOptions = new ChromeOptions();
 			if (headless)
 				chromeOptions.addArguments("--headless=new");
-			chromeOptions.addArguments("--start-maximized");
+				chromeOptions.addArguments("--start-maximized");
 			// driver = new ChromeDriver(chromeOptions);
 			tlDriver.set(new ChromeDriver(chromeOptions));	}
 		else if (browser.equalsIgnoreCase("brave")) {
